@@ -162,7 +162,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gardenia`.`review` (
   `id_review` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `comment` VARCHAR(300) NOT NULL,
+  `comment` VARCHAR(400) NOT NULL,
   `date` DATE NOT NULL,
   `score` TINYINT(1) NOT NULL,
   `order_id` INT UNSIGNED NOT NULL,
@@ -186,7 +186,7 @@ CREATE TABLE IF NOT EXISTS `gardenia`.`product` (
   `score` FLOAT UNSIGNED NULL,
   `total_cost` MEDIUMINT(8) UNSIGNED NOT NULL,
   `stock` SMALLINT(5) UNSIGNED ZEROFILL NOT NULL,
-  `description` VARCHAR(400) NOT NULL,
+  `description` VARCHAR(800) NOT NULL,
   `production_cost` MEDIUMINT(8) NOT NULL,
   PRIMARY KEY (`id_product`),
   UNIQUE INDEX `id_product_UNIQUE` (`id_product` ASC))
@@ -277,7 +277,7 @@ CREATE TABLE IF NOT EXISTS `gardenia`.`plant` (
   `id_plant` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `scientific_name` VARCHAR(40) NULL,
   `stockeable_as` TINYINT(1) UNSIGNED NOT NULL,
-  `care_instructions` VARCHAR(500) NOT NULL,
+  `care_instructions` VARCHAR(1500) NOT NULL,
   `product_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id_plant`),
   UNIQUE INDEX `id_plant_UNIQUE` (`id_plant` ASC) VISIBLE,
