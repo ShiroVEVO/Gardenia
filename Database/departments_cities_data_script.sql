@@ -72,5 +72,5 @@ INSERT INTO product_has_category VALUES (2, 2);
 INSERT INTO product_has_category VALUES (3, 3);
 
 -- --------- CUENTA ---------
-
-INSERT INTO account VALUES (default,"perro",curdate(),"contraseña","CC",1010043148)
+Select * from account;
+INSERT INTO account VALUES (default,"perro@gmail.com",curdate(),"contraseña","CC",1010043148)

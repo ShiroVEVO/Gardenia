@@ -21,8 +21,8 @@ CREATE TABLE IF NOT EXISTS `gardenia`.`department` (
   `id_department` TINYINT(2) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(24) NOT NULL,
   PRIMARY KEY (`id_department`),
-  UNIQUE INDEX `id_department_UNIQUE` (`id_department` ASC),
-  UNIQUE INDEX `name_UNIQUE` (`name` ASC))
+  UNIQUE INDEX `id_department_UNIQUE` (`id_department` ASC) VISIBLE,
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
@@ -35,8 +35,8 @@ CREATE TABLE IF NOT EXISTS `gardenia`.`city` (
   `shipping_cost` MEDIUMINT(8) UNSIGNED NOT NULL,
   `department_id` TINYINT(2) UNSIGNED NOT NULL,
   PRIMARY KEY (`id_city`),
-  UNIQUE INDEX `id_city_UNIQUE` (`id_city` ASC),
-  INDEX `fk_city_department1_idx` (`department_id` ASC),
+  UNIQUE INDEX `id_city_UNIQUE` (`id_city` ASC) VISIBLE,
+  INDEX `fk_city_department1_idx` (`department_id` ASC) VISIBLE,
   CONSTRAINT `fk_city_department1`
     FOREIGN KEY (`department_id`)
     REFERENCES `gardenia`.`department` (`id_department`)
@@ -69,9 +69,9 @@ CREATE TABLE IF NOT EXISTS `gardenia`.`address` (
   `client_document_type` VARCHAR(2) NOT NULL,
   `client_document_num` BIGINT(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`id_address`),
-  UNIQUE INDEX `id_address_UNIQUE` (`id_address` ASC),
-  INDEX `fk_address_city_idx` (`city_id` ASC),
-  INDEX `fk_address_client1_idx` (`client_document_type` ASC, `client_document_num` ASC),
+  UNIQUE INDEX `id_address_UNIQUE` (`id_address` ASC) VISIBLE,
+  INDEX `fk_address_city_idx` (`city_id` ASC) VISIBLE,
+  INDEX `fk_address_client1_idx` (`client_document_type` ASC, `client_document_num` ASC) VISIBLE,
   CONSTRAINT `fk_address_city`
     FOREIGN KEY (`city_id`)
     REFERENCES `gardenia`.`city` (`id_city`)
@@ -96,9 +96,9 @@ CREATE TABLE IF NOT EXISTS `gardenia`.`account` (
   `client_document_type` VARCHAR(2) NOT NULL,
   `client_document_num` BIGINT(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`id_account`, `client_document_type`, `client_document_num`),
-  UNIQUE INDEX `id_account_UNIQUE` (`id_account` ASC),
-  INDEX `fk_account_client1_idx` (`client_document_type` ASC, `client_document_num` ASC),
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC),
+  UNIQUE INDEX `id_account_UNIQUE` (`id_account` ASC) VISIBLE,
+  INDEX `fk_account_client1_idx` (`client_document_type` ASC, `client_document_num` ASC) VISIBLE,
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
   CONSTRAINT `fk_account_client1`
     FOREIGN KEY (`client_document_type` , `client_document_num`)
     REFERENCES `gardenia`.`client` (`document_type` , `document_num`)
@@ -117,24 +117,13 @@ CREATE TABLE IF NOT EXISTS `gardenia`.`order` (
   `client_document_type` VARCHAR(2) NOT NULL,
   `client_document_num` BIGINT(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`id_order`),
-  UNIQUE INDEX `id_order_UNIQUE` (`id_order` ASC),
-  INDEX `fk_order_client1_idx` (`client_document_type` ASC, `client_document_num` ASC),
+  UNIQUE INDEX `id_order_UNIQUE` (`id_order` ASC) VISIBLE,
+  INDEX `fk_order_client1_idx` (`client_document_type` ASC, `client_document_num` ASC) VISIBLE,
   CONSTRAINT `fk_order_client1`
     FOREIGN KEY (`client_document_type` , `client_document_num`)
     REFERENCES `gardenia`.`client` (`document_type` , `document_num`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `gardenia`.`base_cost`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gardenia`.`base_cost` (
-  `id_base_cost` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `amount` MEDIUMINT(8) UNSIGNED NOT NULL,
-  PRIMARY KEY (`id_base_cost`),
-  UNIQUE INDEX `id_base_cost_UNIQUE` (`id_base_cost` ASC))
 ENGINE = InnoDB;
 
 
@@ -145,15 +134,9 @@ CREATE TABLE IF NOT EXISTS `gardenia`.`purchase_option` (
   `id_purchase_option` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(20) NOT NULL,
   `url_img` VARCHAR(300) NOT NULL,
-  `base_cost_id` INT UNSIGNED NOT NULL,
+  `total_base_cost` MEDIUMINT(8) UNSIGNED ZEROFILL NOT NULL,
   PRIMARY KEY (`id_purchase_option`),
-  UNIQUE INDEX `id_purchase_option_UNIQUE` (`id_purchase_option` ASC),
-  INDEX `fk_purchase_option_base_cost1_idx` (`base_cost_id` ASC),
-  CONSTRAINT `fk_purchase_option_base_cost1`
-    FOREIGN KEY (`base_cost_id`)
-    REFERENCES `gardenia`.`base_cost` (`id_base_cost`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  UNIQUE INDEX `id_purchase_option_UNIQUE` (`id_purchase_option` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
@@ -167,8 +150,8 @@ CREATE TABLE IF NOT EXISTS `gardenia`.`review` (
   `score` TINYINT(1) NOT NULL,
   `order_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id_review`),
-  UNIQUE INDEX `id_review_UNIQUE` (`id_review` ASC),
-  INDEX `fk_review_order1_idx` (`order_id` ASC),
+  UNIQUE INDEX `id_review_UNIQUE` (`id_review` ASC) VISIBLE,
+  INDEX `fk_review_order1_idx` (`order_id` ASC) VISIBLE,
   CONSTRAINT `fk_review_order1`
     FOREIGN KEY (`order_id`)
     REFERENCES `gardenia`.`order` (`id_order`)
@@ -189,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `gardenia`.`product` (
   `description` VARCHAR(800) NOT NULL,
   `production_cost` MEDIUMINT(8) NOT NULL,
   PRIMARY KEY (`id_product`),
-  UNIQUE INDEX `id_product_UNIQUE` (`id_product` ASC))
+  UNIQUE INDEX `id_product_UNIQUE` (`id_product` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
@@ -223,28 +206,6 @@ CREATE TABLE IF NOT EXISTS `gardenia`.`spent` (
   `unit` VARCHAR(2) NOT NULL,
   PRIMARY KEY (`id_spent`),
   UNIQUE INDEX `id_spent_UNIQUE` (`id_spent` ASC) VISIBLE)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `gardenia`.`base_cost_has_spent`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gardenia`.`base_cost_has_spent` (
-  `base_cost_id_base_cost` INT UNSIGNED NOT NULL,
-  `spent_id_spent` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`base_cost_id_base_cost`, `spent_id_spent`),
-  INDEX `fk_base_cost_has_spent_spent1_idx` (`spent_id_spent` ASC) VISIBLE,
-  INDEX `fk_base_cost_has_spent_base_cost1_idx` (`base_cost_id_base_cost` ASC) VISIBLE,
-  CONSTRAINT `fk_base_cost_has_spent_base_cost1`
-    FOREIGN KEY (`base_cost_id_base_cost`)
-    REFERENCES `gardenia`.`base_cost` (`id_base_cost`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_base_cost_has_spent_spent1`
-    FOREIGN KEY (`spent_id_spent`)
-    REFERENCES `gardenia`.`spent` (`id_spent`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -345,14 +306,28 @@ CREATE TABLE IF NOT EXISTS `gardenia`.`order_has_product` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-USE `gardenia`;
 
-DELIMITER $$
-USE `gardenia`$$
-$$
+-- -----------------------------------------------------
+-- Table `gardenia`.`purchase_option_has_spent`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gardenia`.`purchase_option_has_spent` (
+  `purchase_option_id_purchase_option` INT UNSIGNED NOT NULL,
+  `spent_id_spent` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`purchase_option_id_purchase_option`, `spent_id_spent`),
+  INDEX `fk_purchase_option_has_spent_spent1_idx` (`spent_id_spent` ASC) VISIBLE,
+  INDEX `fk_purchase_option_has_spent_purchase_option1_idx` (`purchase_option_id_purchase_option` ASC) VISIBLE,
+  CONSTRAINT `fk_purchase_option_has_spent_purchase_option1`
+    FOREIGN KEY (`purchase_option_id_purchase_option`)
+    REFERENCES `gardenia`.`purchase_option` (`id_purchase_option`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_purchase_option_has_spent_spent1`
+    FOREIGN KEY (`spent_id_spent`)
+    REFERENCES `gardenia`.`spent` (`id_spent`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
-
-DELIMITER ;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
