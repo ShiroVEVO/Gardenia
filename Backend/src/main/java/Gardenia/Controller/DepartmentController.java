@@ -34,8 +34,8 @@ public class DepartmentController {
     }
 
     @PostMapping("/save")
-    public void saveDepartment() {
-        departmentService.save(null);
+    public void saveDepartment(@RequestBody Department department) {
+        departmentService.save(department);
     }
 
     @DeleteMapping("/{id_deparment}")
@@ -45,7 +45,6 @@ public class DepartmentController {
 
     @PutMapping("/{id_deparment}")
     public Department updateDepartment(@RequestBody Department department, @PathVariable("id_deparment") Integer id) {
-        departmentService.update(department, id);
-        return null;
+        return departmentService.update(department, id);
     }
 }
