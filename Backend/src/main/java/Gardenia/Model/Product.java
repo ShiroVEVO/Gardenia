@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "INT UNSIGNED")
     private Integer id_product;
 
     @Column(columnDefinition = "VARCHAR(50)", nullable = false)

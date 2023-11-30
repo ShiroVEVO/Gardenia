@@ -25,27 +25,27 @@ public class ProductController {
 
     @GetMapping
     public List<Product> getAllProducts() {
-        return productService.getProducts();
+        return productService.getAll();
     }
 
     @GetMapping("/{id_product}")
     public Optional<Product> GetProductById(@PathVariable("id_product") Integer id) {
-        return productService.getProductById(id);
+        return productService.getById(id);
     }
 
     @PostMapping("/save")
     public void saveProduct(@RequestBody Product product) {
-        productService.saveProduct(product);
+        productService.save(product);
     }
 
     @DeleteMapping("/{id_product}")
     public void deleteProductById(@PathVariable("id_product") Integer id) {
-        productService.deleteProductById(id);
+        productService.deleteById(id);
     }
 
     @PutMapping("/{id_product}")
     public void updateProductById(@RequestBody Product product, @PathVariable("id_product") Integer id) {
-        productService.updateProduct(product, id);
+        productService.update(product, id);
     }
 
 }

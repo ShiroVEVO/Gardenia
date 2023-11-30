@@ -15,23 +15,23 @@ import lombok.RequiredArgsConstructor;
 public class ProductService {
     private final ProductRepository productRepository;
 
-    public List<Product> getProducts() {
+    public List<Product> getAll() {
         return productRepository.findAll();
     }
 
-    public Optional<Product> getProductById(Integer id) {
+    public Optional<Product> getById(Integer id) {
         return productRepository.findById(id);
     }
 
-    public void saveProduct(Product product) {
+    public void save(Product product) {
         productRepository.save(product);
     }
 
-    public void deleteProductById(Integer id) {
+    public void deleteById(Integer id) {
         productRepository.deleteById(id);
     }
 
-    public void updateProduct(Product product, Integer id) {
+    public Product update(Product product, Integer id) {
         Optional<Product> existingProductOptional = productRepository.findById(id);
         if (existingProductOptional.isPresent()) {
             Product existingProduct = existingProductOptional.get();
@@ -41,9 +41,11 @@ public class ProductService {
             existingProduct.setScore(product.getScore());
             existingProduct.setStock(product.getStock());
             existingProduct.setTotal_cost(product.getTotal_cost());
-            saveProduct(existingProduct);
+            save(existingProduct);
+            return existingProduct;
         } else {
             // IDK xd
+            return null;
         }
     }
 }
