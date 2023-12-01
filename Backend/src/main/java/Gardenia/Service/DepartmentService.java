@@ -3,10 +3,9 @@ package Gardenia.Service;
 import java.util.List;
 import java.util.Optional;
 
-import javax.swing.text.html.Option;
-
 import org.springframework.stereotype.Service;
 
+import Gardenia.DTO.DepartmentDTO;
 import Gardenia.Model.Department;
 import Gardenia.Repository.DepartmentRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,12 +15,12 @@ import lombok.RequiredArgsConstructor;
 public class DepartmentService {
     private final DepartmentRepository departmentRepository;
 
-    public List<Department> getAll() {
-        return departmentRepository.findAll();
+    public List<DepartmentDTO> getAllDTO() {
+        return departmentRepository.findDepartmentBy();
     }
 
-    public Optional<Department> getById(Integer id) {
-        return departmentRepository.findById(id);
+    public Optional<DepartmentDTO> getDTOById(Integer id) {
+        return departmentRepository.findByIdDepartment(id);
     }
 
     public void save(Department department) {
@@ -43,6 +42,11 @@ public class DepartmentService {
             // IDK xdd
             return null;
         }
-
     }
+
+    // Possible
+    public Optional<Department> getById(Integer id) {
+        return departmentRepository.findById(id);
+    }
+
 }

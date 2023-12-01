@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import Gardenia.DTO.CityDTO;
 import Gardenia.Model.City;
 import Gardenia.Service.CityService;
 import lombok.RequiredArgsConstructor;
@@ -24,14 +25,13 @@ public class CityController {
     private final CityService cityService;
 
     @GetMapping
-    public List<City> getCities() {
-        return cityService.getAll();
+    public List<CityDTO> getCities() {
+        return cityService.getAllDTO();
     }
 
     @GetMapping("/{id_city}")
-    public Optional<City> getCityById(@PathVariable("id_city") Integer id) {
-        return cityService.getById(id);
-
+    public Optional<CityDTO> getCityById(@PathVariable("id_city") Integer id) {
+        return cityService.getDTOById(id);
     }
 
     @PostMapping("/save")

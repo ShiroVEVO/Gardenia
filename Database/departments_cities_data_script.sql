@@ -42,9 +42,14 @@ INSERT INTO client VALUES ("CC",1010043148,3125544964,"Adrian Stiven", "Olmos Ar
 INSERT INTO client VALUES ("CC",1018447035,3016220266,"Dalia Estefania", "Montes Buitrago");
 INSERT INTO client VALUES ("CC",1016041194,3212798623,"Edwin", "Guerrero");
 
-INSERT INTO address VALUES (default,"Calle 32B sur #6D - 08 Este",NULL,1,"CC",1010043148);
-INSERT INTO address VALUES (default,"Calle 51 #26 - 36",NULL,1,"CC",1018447035);
-INSERT INTO address VALUES (default,"Calle 14 #107-54","casa 313 conjunto parques 1D",1,"CC",1016041194);
+/*INSERT INTO address VALUES (default,NULL,"Calle 32B sur #6D - 08 Este",NULL,1,"CC",1010043148);
+INSERT INTO address VALUES (default,NULL,"Calle 51 #26 - 36",NULL,1,"CC",1018447035);
+INSERT INTO address VALUES (default,NULL,"Calle 14 #107-54","casa 313 conjunto parques 1D",1,"CC",1016041194);*/
+
+INSERT INTO address VALUES (default,NULL,"Calle 32B sur #6D - 08 Este",2);
+INSERT INTO address VALUES (default,NULL,"Calle 51 #26 - 36",2);
+INSERT INTO address VALUES (default,"casa 313 conjunto parques 1D","Calle 14 #107-54",2);
+
 
 -- --------- PRODUCTOS ---------
 

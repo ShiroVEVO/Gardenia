@@ -14,6 +14,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 CREATE SCHEMA IF NOT EXISTS `gardenia` DEFAULT CHARACTER SET utf8 ;
 USE `gardenia` ;
 
+/*
 -- -----------------------------------------------------
 -- Table `gardenia`.`department`
 -- -----------------------------------------------------
@@ -24,8 +25,9 @@ CREATE TABLE IF NOT EXISTS `gardenia`.`department` (
   UNIQUE INDEX `id_department_UNIQUE` (`id_department` ASC) VISIBLE,
   UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE)
 ENGINE = InnoDB;
+*/
 
-
+/*
 -- -----------------------------------------------------
 -- Table `gardenia`.`city`
 -- -----------------------------------------------------
@@ -43,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `gardenia`.`city` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
+*/
 
 -- -----------------------------------------------------
 -- Table `gardenia`.`client`

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import Gardenia.DTO.DepartmentDTO;
 import Gardenia.Model.Department;
 import Gardenia.Service.DepartmentService;
 import lombok.RequiredArgsConstructor;
@@ -24,13 +25,13 @@ public class DepartmentController {
     private final DepartmentService departmentService;
 
     @GetMapping
-    public List<Department> getAllDepartment() {
-        return departmentService.getAll();
+    public List<DepartmentDTO> getAllDepartment() {
+        return departmentService.getAllDTO();
     }
 
     @GetMapping("/{id_deparment}")
-    public Optional<Department> getDepartmentById(Integer id) {
-        return departmentService.getById(id);
+    public Optional<DepartmentDTO> getDepartmentById(Integer id) {
+        return departmentService.getDTOById(id);
     }
 
     @PostMapping("/save")

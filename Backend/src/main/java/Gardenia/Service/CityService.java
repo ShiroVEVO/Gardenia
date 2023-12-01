@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import Gardenia.DTO.CityDTO;
 import Gardenia.Model.City;
 import Gardenia.Repository.CityRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,12 +15,12 @@ import lombok.RequiredArgsConstructor;
 public class CityService {
     private final CityRepository cityRepository;
 
-    public List<City> getAll() {
-        return cityRepository.findAll();
+    public List<CityDTO> getAllDTO() {
+        return cityRepository.findCityBy();
     }
 
-    public Optional<City> getById(Integer id) {
-        return cityRepository.findById(id);
+    public Optional<CityDTO> getDTOById(Integer id) {
+        return cityRepository.findCityByIdCity(id);
     }
 
     public void save(City city) {
@@ -35,7 +36,7 @@ public class CityService {
         if (optionalCityExisting.isPresent()) {
             City cityExisting = optionalCityExisting.get();
             cityExisting.setName(city.getName());
-            cityExisting.setShipping_cost(city.getShipping_cost());
+            cityExisting.setShippingCost(city.getShippingCost());
             save(cityExisting);
             return cityExisting;
         } else {
@@ -44,4 +45,8 @@ public class CityService {
         }
     }
 
+    // Possible
+    public Optional<City> getById(Integer id) {
+        return cityRepository.findById(id);
+    }
 }
