@@ -8,12 +8,14 @@ import org.springframework.stereotype.Service;
 import Gardenia.DTO.AddressDTO;
 import Gardenia.Model.Address;
 import Gardenia.Repository.AddressRepository;
+import Gardenia.Repository.CityRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class AddressService {
     private final AddressRepository addressRepository;
+    private final CityRepository cityRepository;
 
     public List<AddressDTO> getAllDTO() {
         return addressRepository.findAddressBy();
@@ -23,7 +25,13 @@ public class AddressService {
         return addressRepository.findAddressByIdAddress(id);
     }
 
+    public List<AddressDTO> getByClient(Integer id) {
+        // PENDING
+        return null;
+    }
+
     public void save(Address address) {
+        // EXCEPCION DE QUE EXISTA LA CIUDAD, SI NO EXISTE CREARLA
         addressRepository.save(address);
     }
 

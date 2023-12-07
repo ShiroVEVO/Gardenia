@@ -16,11 +16,23 @@ import Gardenia.DTO.CityDTO;
 import Gardenia.Model.City;
 import Gardenia.Service.CityService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.RequestParam;
+
+/*
+ Input structure for City post on JSON
+  {
+  "name": "Example City",
+  "shippingCost": 10, 
+  "department": {
+    "idDepartment": 1,
+    "name": "Amazonas"
+  }
+}
+ */
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/city")
-
 public class CityController {
     private final CityService cityService;
 
@@ -34,18 +46,23 @@ public class CityController {
         return cityService.getDTOById(id);
     }
 
+    @GetMapping("/{id_department}/department")
+    public List<CityDTO> getCitiesByDepartment(@PathVariable("id_department") Integer id) {
+        return cityService.getByDepartment(id);
+    }
+
     @PostMapping("/save")
-    public void saveCity(@RequestBody City city) {
-        cityService.save(city);
+    public Boolean saveCity(@RequestBody City city) {
+        return cityService.save(city);
     }
 
     @DeleteMapping("/{id_city}")
-    public void deleteCityById() {
-
+    public void deleteCityById(@PathVariable("id_city") Integer id) {
+        cityService.deleteById(id);
     }
 
     @PutMapping("/{id_city}")
-    public City updateCity(@RequestBody City city, @PathVariable("id_city") Integer id) {
-        return cityService.update(city, id);
+    public Boolean updateCity(@RequestBody City city, @PathVariable("id_city") Integer id) {
+        return cityService.updateById(city, id);
     }
 }

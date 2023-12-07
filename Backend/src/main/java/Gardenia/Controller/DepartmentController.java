@@ -25,27 +25,27 @@ public class DepartmentController {
     private final DepartmentService departmentService;
 
     @GetMapping
-    public List<DepartmentDTO> getAllDepartment() {
+    public List<DepartmentDTO> getAllDepartments() {
         return departmentService.getAllDTO();
     }
 
-    @GetMapping("/{id_deparment}")
-    public Optional<DepartmentDTO> getDepartmentById(Integer id) {
+    @GetMapping("/{id_department}")
+    public Optional<DepartmentDTO> getDepartmentById(@PathVariable("id_department") Integer id) {
         return departmentService.getDTOById(id);
     }
 
     @PostMapping("/save")
-    public void saveDepartment(@RequestBody Department department) {
-        departmentService.save(department);
+    public Boolean saveDepartment(@RequestBody Department department) {
+        return departmentService.save(department);
     }
 
-    @DeleteMapping("/{id_deparment}")
-    public void deleteDepartment(@PathVariable("id_deparment") Integer id) {
-        departmentService.delete(id);
+    @DeleteMapping("/{id_department}")
+    public void deleteDepartmentById(@PathVariable("id_department") Integer id) {
+        departmentService.deleteById(id);
     }
 
-    @PutMapping("/{id_deparment}")
-    public Department updateDepartment(@RequestBody Department department, @PathVariable("id_deparment") Integer id) {
-        return departmentService.update(department, id);
+    @PutMapping("/{id_department}")
+    public Boolean updateDepartmentById(@RequestBody Department department, @PathVariable("id_department") Integer id) {
+        return departmentService.updateById(department, id);
     }
 }

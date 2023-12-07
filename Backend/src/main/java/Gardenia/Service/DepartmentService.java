@@ -3,6 +3,7 @@ package Gardenia.Service;
 import java.util.List;
 import java.util.Optional;
 
+import org.hibernate.sql.ast.tree.predicate.BooleanExpressionPredicate;
 import org.springframework.stereotype.Service;
 
 import Gardenia.DTO.DepartmentDTO;
@@ -20,33 +21,31 @@ public class DepartmentService {
     }
 
     public Optional<DepartmentDTO> getDTOById(Integer id) {
-        return departmentRepository.findByIdDepartment(id);
+        return departmentRepository.findDepartmentByIdDepartment(id);
     }
 
-    public void save(Department department) {
+    public Optional<Department> getById(Integer id) {
+        return departmentRepository.findById(id);
+    }
+
+    public Boolean save(Department department) {
         departmentRepository.save(department);
+        return true;
     }
 
-    public void delete(Integer id) {
+    public void deleteById(Integer id) {
         departmentRepository.deleteById(id);
     }
 
-    public Department update(Department department, Integer id) {
+    public Boolean updateById(Department department, Integer id) {
         Optional<Department> optionalDepartmentExisting = getById(id);
         if (optionalDepartmentExisting.isPresent()) {
             Department departmentExisting = optionalDepartmentExisting.get();
             departmentExisting.setName(department.getName());
             save(departmentExisting);
-            return departmentExisting;
+            return true;
         } else {
-            // IDK xdd
-            return null;
+            return false;
         }
     }
-
-    // Possible
-    public Optional<Department> getById(Integer id) {
-        return departmentRepository.findById(id);
-    }
-
 }

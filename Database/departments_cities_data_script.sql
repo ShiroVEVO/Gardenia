@@ -38,9 +38,9 @@ INSERT INTO city VALUES(default,"Bogotá",7600,5);
 
 -- --------- CLIENTES ---------
 
-INSERT INTO client VALUES ("CC",1010043148,3125544964,"Adrian Stiven", "Olmos Ardila");
-INSERT INTO client VALUES ("CC",1018447035,3016220266,"Dalia Estefania", "Montes Buitrago");
-INSERT INTO client VALUES ("CC",1016041194,3212798623,"Edwin", "Guerrero");
+INSERT INTO client VALUES (1010043148,"CC", "Olmos Ardila","Adrian Stiven",3125544964);
+INSERT INTO client VALUES (1018447035,"CC", "Montes Buitrago","Dalia Estefania",3016220266);
+INSERT INTO client VALUES (1016041194,"CC", "Guerrero","Edwin",3212798623);
 
 /*INSERT INTO address VALUES (default,NULL,"Calle 32B sur #6D - 08 Este",NULL,1,"CC",1010043148);
 INSERT INTO address VALUES (default,NULL,"Calle 51 #26 - 36",NULL,1,"CC",1018447035);

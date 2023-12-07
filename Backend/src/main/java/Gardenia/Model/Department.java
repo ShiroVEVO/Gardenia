@@ -31,4 +31,11 @@ public class Department {
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "department")
     private List<City> cities;
+
+    public String toString() {
+        return "{" +
+                "\"idDepartment\":" + idDepartment + "," +
+                "\"name\":" + name +
+                "}";
+    }
 }

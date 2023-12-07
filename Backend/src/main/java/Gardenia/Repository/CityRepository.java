@@ -15,5 +15,4 @@ public interface CityRepository extends JpaRepository<City, Integer> {
     List<CityDTO> findCityBy();
 
     Optional<CityDTO> findCityByIdCity(Integer idCity);
-
 }
