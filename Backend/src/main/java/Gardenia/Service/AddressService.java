@@ -7,8 +7,12 @@ import org.springframework.stereotype.Service;
 
 import Gardenia.DTO.AddressDTO;
 import Gardenia.Model.Address;
+import Gardenia.Model.City;
+import Gardenia.Model.Client;
 import Gardenia.Repository.AddressRepository;
 import Gardenia.Repository.CityRepository;
+import Gardenia.Repository.ClientRepository;
+import Gardenia.Util.ClientKey;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -16,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 public class AddressService {
     private final AddressRepository addressRepository;
     private final CityRepository cityRepository;
+    private final ClientRepository clientRepository;
 
     public List<AddressDTO> getAllDTO() {
         return addressRepository.findAddressBy();
@@ -25,37 +30,48 @@ public class AddressService {
         return addressRepository.findAddressByIdAddress(id);
     }
 
-    public List<AddressDTO> getByClient(Integer id) {
-        // PENDING
-        return null;
+    public Optional<Address> getById(Integer id) {
+        return addressRepository.findById(id);
     }
 
-    public void save(Address address) {
-        // EXCEPCION DE QUE EXISTA LA CIUDAD, SI NO EXISTE CREARLA
-        addressRepository.save(address);
+    public List<AddressDTO> getByClient(ClientKey clientKey) {
+        Optional<Client> optionalClient = clientRepository
+                .findClientByClientKey_DocumentTypeAndClientKey_DocumentNumber(
+                        clientKey.getDocumentType(), clientKey.getDocumentNumber());
+        if (optionalClient.isPresent()) {
+            return clientRepository.findAddressesByClient(clientKey.getDocumentType(), clientKey.getDocumentNumber());
+        } else {
+            return null;
+        }
+
+    }
+
+    public Boolean save(Address address) {
+        City addressCity = address.getCity();
+        Optional<City> optionalCityExisting = cityRepository.findById(addressCity.getIdCity());
+        if (optionalCityExisting.isPresent()) {
+            addressRepository.save(address);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void delete(Integer id) {
         addressRepository.deleteById(id);
     }
 
-    public Address update(Address address, Integer id) {
+    public Boolean update(Address address, Integer id) {
         Optional<Address> optionalAddressExisting = getById(id);
         if (optionalAddressExisting.isPresent()) {
             Address addressExisting = optionalAddressExisting.get();
             addressExisting.setAddressValue(address.getAddressValue());
             addressExisting.setAddressReferences(address.getAddressReferences());
             save(addressExisting);
-            return addressExisting;
+            return true;
         } else {
-            // IDK
-            return null;
+            return false;
         }
-    }
-
-    // Possible
-    public Optional<Address> getById(Integer id) {
-        return addressRepository.findById(id);
     }
 
 }

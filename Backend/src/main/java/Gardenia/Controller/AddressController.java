@@ -28,8 +28,8 @@ import org.springframework.web.bind.annotation.RestController;
 import Gardenia.DTO.AddressDTO;
 import Gardenia.Model.Address;
 import Gardenia.Service.AddressService;
+import Gardenia.Util.ClientKey;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequiredArgsConstructor
@@ -48,16 +48,15 @@ public class AddressController {
         return addressService.getDTOById(id);
     }
 
-    @GetMapping("/{id_client}/client")
-    public Optional<AddressDTO> getAddresByClient(@PathVariable("id_client") Integer id) {
-        // PENDING
-        return null;
+    @PostMapping("/client")
+    public List<AddressDTO> getAddresByClient(@RequestBody ClientKey clientKey) {
+        // FALTA CAMBIARLO A ADDRESS DTO
+        return addressService.getByClient(clientKey);
     }
 
     @PostMapping("/save")
-    public void saveAddress(@RequestBody Address address) {
-        // EXCEPCION DE QUE EXISTA LA CIUDAD, SI NO EXISTE CREARLA
-        addressService.save(address);
+    public Boolean saveAddress(@RequestBody Address address) {
+        return addressService.save(address);
     }
 
     @DeleteMapping("/{id_address}")
@@ -66,7 +65,7 @@ public class AddressController {
     }
 
     @PutMapping("/{id_address}")
-    public Address updateAddress(@RequestBody Address address, @PathVariable("id_address") Integer id) {
+    public Boolean updateAddress(@RequestBody Address address, @PathVariable("id_address") Integer id) {
         return addressService.update(address, id);
     }
 }

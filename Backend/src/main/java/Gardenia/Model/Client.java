@@ -10,7 +10,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,10 +34,14 @@ public class Client {
     @Column(columnDefinition = "VARCHAR(10)", nullable = false)
     private String phoneNumber;
 
-    @JsonManagedReference
+    @JsonManagedReference("client-address")
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "client")
     private List<Address> addresses;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "account_id")
+    private Account account;
+
     // private List<Order> orders;
-    // private Account account;
+
 }

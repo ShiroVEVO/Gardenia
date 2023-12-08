@@ -33,12 +33,12 @@ public class Address {
     private String addressReferences;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference("city-address")
     @JoinColumn(name = "city_id", nullable = false)
     private City city;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference("client-address")
     @JoinColumns({
             @JoinColumn(name = "clientDocumentType", columnDefinition = "VARCHAR(2) CHECK (client_document_type in ('CC', 'PA', 'CE', 'TI'))", referencedColumnName = "documentType", nullable = false),
             @JoinColumn(name = "clientDocumentNumber", referencedColumnName = "documentNumber", nullable = false),

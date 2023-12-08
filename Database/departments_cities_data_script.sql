@@ -46,7 +46,7 @@ INSERT INTO client VALUES (1016041194,"CC", "Guerrero","Edwin",3212798623);
 INSERT INTO address VALUES (default,NULL,"Calle 51 #26 - 36",NULL,1,"CC",1018447035);
 INSERT INTO address VALUES (default,NULL,"Calle 14 #107-54","casa 313 conjunto parques 1D",1,"CC",1016041194);*/
 
-INSERT INTO address VALUES (default,NULL,"Calle 32B sur #6D - 08 Este",2);
+INSERT INTO address VALUES (default,NULL,"Calle 32B sur #6D - 08 Este",2,1010043148,"CC");
 INSERT INTO address VALUES (default,NULL,"Calle 51 #26 - 36",2);
 INSERT INTO address VALUES (default,"casa 313 conjunto parques 1D","Calle 14 #107-54",2);
 

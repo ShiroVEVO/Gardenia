@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import Gardenia.DTO.ClientDTO;
 import Gardenia.Model.Client;
 import Gardenia.Repository.ClientRepository;
+import Gardenia.Util.ClientKey;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
@@ -48,7 +49,16 @@ public class ClientService {
     }
 
     public Boolean updateById(Client client) {
-        // PENDING
-        return false;
+        Optional<Client> optionalClientExisting = getByKey(client.getClientKey().getDocumentType(),
+                client.getClientKey().getDocumentNumber());
+        if (optionalClientExisting.isPresent()) {
+            Client clientExisting = optionalClientExisting.get();
+            clientExisting.setNames(client.getNames());
+            clientExisting.setLastnames(client.getLastnames());
+            clientExisting.setPhoneNumber(client.getPhoneNumber());
+            return save(clientExisting);
+        } else {
+            return false;
+        }
     }
 }

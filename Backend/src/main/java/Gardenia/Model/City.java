@@ -34,11 +34,10 @@ public class City {
     @Column(columnDefinition = "MEDIUMINT(8) UNSIGNED", nullable = false)
     private Integer shippingCost;
 
-    @JsonManagedReference
+    @JsonManagedReference("city-address")
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "city")
     private List<Address> addresses;
 
-    // @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "department_id", nullable = false)
     private Department department;
