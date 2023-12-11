@@ -5,15 +5,19 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinColumns;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,7 +35,6 @@ public class Request {
     @Column(columnDefinition = "VARCHAR(10) CHECK (state IN ('EN_ESPERA', 'PAGADO', 'ENVIADO', 'CANCELADO', 'FINALIZADO'))", nullable = false)
     private String state;
 
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "UTC")
     @Column(nullable = false)
     private Date requestDate;
 
@@ -46,7 +49,10 @@ public class Request {
     })
     private Client client;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "request")
+    @JsonManagedReference("review-request")
+    private List<Review> reviews;
     // private List<Product> products;
-    // private List<Review> reviews;
+
     // private List<Plants> plants;
 }
