@@ -38,9 +38,9 @@ INSERT INTO city VALUES(default,"Bogotá",7600,5);
 
 -- --------- CLIENTES ---------
 
-INSERT INTO client VALUES (1010043148,"CC", "Olmos Ardila","Adrian Stiven",3125544964);
-INSERT INTO client VALUES (1018447035,"CC", "Montes Buitrago","Dalia Estefania",3016220266);
-INSERT INTO client VALUES (1016041194,"CC", "Guerrero","Edwin",3212798623);
+INSERT INTO client VALUES (1010043148,"CC", "Olmos Ardila","Adrian Stiven",3125544964,NULL);
+INSERT INTO client VALUES (1018447035,"CC", "Montes Buitrago","Dalia Estefania",3016220266,NULL);
+INSERT INTO client VALUES (1016041194,"CC", "Guerrero","Edwin",3212798623,NULL);
 
 /*INSERT INTO address VALUES (default,NULL,"Calle 32B sur #6D - 08 Este",NULL,1,"CC",1010043148);
 INSERT INTO address VALUES (default,NULL,"Calle 51 #26 - 36",NULL,1,"CC",1018447035);
@@ -50,6 +50,7 @@ INSERT INTO address VALUES (default,NULL,"Calle 32B sur #6D - 08 Este",2,1010043
 INSERT INTO address VALUES (default,NULL,"Calle 51 #26 - 36",2);
 INSERT INTO address VALUES (default,"casa 313 conjunto parques 1D","Calle 14 #107-54",2);
 
+SELECT * FROM city;
 
 -- --------- PRODUCTOS ---------
 

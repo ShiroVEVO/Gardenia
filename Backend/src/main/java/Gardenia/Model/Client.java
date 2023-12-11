@@ -38,10 +38,11 @@ public class Client {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "client")
     private List<Address> addresses;
 
+    @JsonManagedReference("client-request")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "client")
+    private List<Request> requests;
+
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "account_id")
+    @JoinColumn(name = "account_id", nullable = true)
     private Account account;
-
-    // private List<Order> orders;
-
 }

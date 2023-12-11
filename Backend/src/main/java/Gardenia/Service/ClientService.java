@@ -5,10 +5,11 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import Gardenia.DTO.AccountDTO;
 import Gardenia.DTO.ClientDTO;
 import Gardenia.Model.Client;
+import Gardenia.Repository.AccountRepository;
 import Gardenia.Repository.ClientRepository;
-import Gardenia.Util.ClientKey;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
@@ -16,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ClientService {
     private final ClientRepository clientRepository;
+    private final AccountRepository accountRepository;
 
     public List<ClientDTO> getAllDTO() {
         return clientRepository.findClientBy();
@@ -39,8 +41,19 @@ public class ClientService {
     }
 
     public Boolean save(Client client) {
-        clientRepository.save(client);
-        return true;
+        if (client.getAccount() != null) {
+            Optional<AccountDTO> optionalAccountExisting = accountRepository
+                    .findAccountByIdAccount(client.getAccount().getIdAccount());
+            if (optionalAccountExisting.isPresent()) {
+                clientRepository.save(client);
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            clientRepository.save(client);
+            return true;
+        }
     }
 
     @Transactional
