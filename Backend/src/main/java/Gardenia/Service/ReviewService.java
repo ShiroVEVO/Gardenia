@@ -35,7 +35,7 @@ public class ReviewService {
     }
 
     public List<ReviewDTO> getByDate(Date initialDate, Date finalDate) {
-        return null;
+        return reviewRepository.findRequestByDate(initialDate, finalDate);
     }
 
     public Boolean save(Review review) {

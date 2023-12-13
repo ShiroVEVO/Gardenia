@@ -16,7 +16,6 @@ import Gardenia.DTO.CityDTO;
 import Gardenia.Model.City;
 import Gardenia.Service.CityService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /*
  Input structure for City post on JSON

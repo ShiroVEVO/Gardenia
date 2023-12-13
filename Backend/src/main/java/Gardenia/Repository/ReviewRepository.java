@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import Gardenia.DTO.RequestDTO;
 import Gardenia.DTO.ReviewDTO;
 import Gardenia.Model.Review;
 
@@ -20,8 +19,8 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 
     public List<ReviewDTO> findReviewByScore(Integer id);
 
-    @Query("SELECT new Gardenia.DTO.ReviewDTO() FROM Review re WHERE re.commentDate BETWEEN :initialDate AND :finalDate")
-    public List<ReviewDTO> findRequeestByDate(@Param("initialDate") Date initialDate,
+    @Query("SELECT new Gardenia.DTO.ReviewDTO(re.comment, re.commentDate, re.score) FROM Review re WHERE re.commentDate BETWEEN :initialDate AND :finalDate")
+    public List<ReviewDTO> findRequestByDate(@Param("initialDate") Date initialDate,
             @Param("finalDate") Date finalDate);
 
 }
