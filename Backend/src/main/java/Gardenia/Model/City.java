@@ -2,6 +2,7 @@ package Gardenia.Model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -39,6 +40,7 @@ public class City {
     private List<Address> addresses;
 
     @ManyToOne
+    @JsonBackReference("department-city")
     @JoinColumn(name = "department_id", nullable = false)
     private Department department;
     // METODOS EQUALS Y HASHCODE EN AMBAS

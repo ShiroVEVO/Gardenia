@@ -2,6 +2,8 @@ package Gardenia.Model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,6 +31,7 @@ public class Department {
     @Column(columnDefinition = "VARCHAR(24)", nullable = false)
     private String name;
 
+    @JsonManagedReference("department-city")
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "department")
     private List<City> cities;
 
