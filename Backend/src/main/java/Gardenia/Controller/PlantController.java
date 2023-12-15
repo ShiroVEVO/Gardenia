@@ -51,11 +51,10 @@ public class PlantController {
         return plantService.getByPriceRange(minPrice, maxPrice);
     }
 
-    /*
-     * public List<PlantDTO> getPlantsByCategory(Integer id) {
-     * 
-     * }
-     */
+    @GetMapping("/search_category")
+    public List<PlantDTO> getPlantsByCategory(@RequestParam(name = "idCategory") Integer id) {
+        return plantService.getByCategory(id);
+    }
 
     @PostMapping("save")
     public Boolean save(@RequestBody Plant plant) {

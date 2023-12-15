@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import Gardenia.DTO.PlantDTO;
+import Gardenia.Model.Category;
 import Gardenia.Model.Plant;
 import Gardenia.Repository.PlantRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class PlantService {
     private final PlantRepository plantRepository;
+    private final CategoryService categoryService;
 
     public List<PlantDTO> getAllDTOs() {
         return plantRepository.findPlantsBy();
@@ -39,11 +41,16 @@ public class PlantService {
         return plantRepository.findPlantByTotalCostBetween(minPrice, maxPrice);
     }
 
-    /*
-     * public List<PlantDTO> getByCategory(Integer id) {
-     * 
-     * }
-     */
+    public List<PlantDTO> getByCategory(Integer id) {
+        Optional<Category> optionalCategoryExisting = categoryService.getById(id);
+        if (optionalCategoryExisting.isPresent()) {
+            return plantRepository.findPlantByCategories(optionalCategoryExisting.get());
+        } else {
+            return null;
+        }
+
+    }
+
     public Boolean save(Plant plant) {
         plantRepository.save(plant);
         return true;
