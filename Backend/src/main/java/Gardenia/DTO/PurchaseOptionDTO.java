@@ -7,7 +7,8 @@ import lombok.ToString;
 @Data
 @AllArgsConstructor
 @ToString
-public class PlantDTO {
-    private String scientificName;
-    private String careInstructions;
+public class PurchaseOptionDTO {
+    private String name;
+    private String urlImg;
+
 }

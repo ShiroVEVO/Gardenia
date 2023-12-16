@@ -1,5 +1,6 @@
 package Gardenia.Model;
 
+import java.sql.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -19,20 +20,28 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Category {
+public class Spent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "INT UNSIGNED")
-    private Integer idCategory;
+    private Integer idSpent;
 
-    @Column(columnDefinition = "VARCHAR(300)", nullable = false)
-    private String urlImg;
-
-    @Column(columnDefinition = "VARCHAR(20)", nullable = false)
+    @Column(columnDefinition = "VARCHAR(25)", nullable = false)
     private String name;
 
-    @JsonBackReference("product-category")
-    @ManyToMany(mappedBy = "categories", fetch = FetchType.LAZY)
-    private List<Product> products;
+    @Column(columnDefinition = "VARCHAR(2)", nullable = false)
+    private String unit;
 
+    @Column(nullable = false)
+    private Date spentDate;
+
+    @Column(columnDefinition = "MEDIUMINT(10) UNSIGNED", nullable = false)
+    private Integer amount;
+
+    @Column(columnDefinition = "SMALLINT(5) UNSIGNED")
+    private Integer quantity;
+
+    @JsonBackReference("purchaseOption-spent")
+    @ManyToMany(mappedBy = "spents", fetch = FetchType.LAZY)
+    private List<PurchaseOption> purchaseOptions;
 }

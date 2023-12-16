@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/plant")
@@ -35,27 +34,6 @@ public class PlantController {
         return plantService.getDTOById(id);
     }
 
-    @GetMapping("/search")
-    public List<PlantDTO> getPlantsByWord(@RequestParam(name = "keyword") String word) {
-        return plantService.getByWord(word);
-    }
-
-    @GetMapping("/score")
-    public List<PlantDTO> getPlantsByScore(@RequestParam(name = "value") Integer score) {
-        return plantService.getByScore(score);
-    }
-
-    @GetMapping("/price")
-    public List<PlantDTO> getPlantsByPriceRange(@RequestParam(name = "minPrice") Integer minPrice,
-            @RequestParam(name = "maxPrice") Integer maxPrice) {
-        return plantService.getByPriceRange(minPrice, maxPrice);
-    }
-
-    @GetMapping("/search_category")
-    public List<PlantDTO> getPlantsByCategory(@RequestParam(name = "idCategory") Integer id) {
-        return plantService.getByCategory(id);
-    }
-
     @PostMapping("save")
     public Boolean save(@RequestBody Plant plant) {
         return plantService.save(plant);
@@ -69,6 +47,5 @@ public class PlantController {
     @PutMapping("/{id_plant}")
     public Boolean updateById(@RequestBody Plant plant, @PathVariable("id_plant") Integer id) {
         return plantService.updateById(plant, id);
-
     }
 }

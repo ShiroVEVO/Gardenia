@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import Gardenia.DTO.ProductDTO;
+import Gardenia.Model.Category;
 import Gardenia.Model.Product;
 import Gardenia.Repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,36 +17,56 @@ import lombok.RequiredArgsConstructor;
 public class ProductService {
     private final ProductRepository productRepository;
 
-    public List<Product> getAll() {
-        return productRepository.findAll();
+    public List<ProductDTO> getAllDTO() {
+        return productRepository.findProductBy();
+    }
+
+    public Optional<ProductDTO> getDTOById(Integer id) {
+        return productRepository.findByIdProduct(id);
     }
 
     public Optional<Product> getById(Integer id) {
         return productRepository.findById(id);
     }
 
-    public void save(Product product) {
+    public List<ProductDTO> getByWord(String word) {
+        return productRepository.findProductByNameContaining(word);
+    }
+
+    public List<ProductDTO> getByScore(Integer score) {
+        return productRepository.findProductByScoreBetween(score.floatValue(), score.floatValue() + 1);
+    }
+
+    public List<ProductDTO> getByPrice(Integer minPrice, Integer maxPrice) {
+        return productRepository.findProductByTotalCostBetween(minPrice, maxPrice);
+    }
+
+    public List<ProductDTO> getByCategories(Category category) {
+        return productRepository.findProductByCategories(category);
+    }
+
+    public Boolean save(Product product) {
         productRepository.save(product);
+        return true;
     }
 
     public void deleteById(Integer id) {
         productRepository.deleteById(id);
     }
 
-    public Product update(Product product, Integer id) {
+    public Boolean update(Product product, Integer id) {
         Optional<Product> existingProductOptional = productRepository.findById(id);
         if (existingProductOptional.isPresent()) {
             Product existingProduct = existingProductOptional.get();
             existingProduct.setDescription(product.getDescription());
             existingProduct.setName(product.getName());
-            existingProduct.setProduction_cost(product.getProduction_cost());
+            existingProduct.setProductionCost(product.getProductionCost());
             existingProduct.setScore(product.getScore());
             existingProduct.setStock(product.getStock());
-            existingProduct.setTotal_cost(product.getTotal_cost());
-            save(existingProduct);
-            return existingProduct;
+            existingProduct.setTotalCost(product.getTotalCost());
+            existingProduct.setStockeableAs(product.getStockeableAs());
+            return save(existingProduct);
         } else {
-            // IDK xd
             return null;
         }
     }

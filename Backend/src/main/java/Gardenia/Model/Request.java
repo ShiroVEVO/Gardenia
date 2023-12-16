@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -16,6 +15,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinColumns;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -52,7 +53,11 @@ public class Request {
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "request")
     @JsonManagedReference("review-request")
     private List<Review> reviews;
-    // private List<Product> products;
 
-    // private List<Plants> plants;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "request_has_products", joinColumns = {
+            @JoinColumn(name = "request_id", referencedColumnName = "idRequest") }, inverseJoinColumns = {
+                    @JoinColumn(name = "product_id", referencedColumnName = "idProduct")
+            })
+    private List<Product> products;
 }

@@ -7,16 +7,13 @@ import org.springframework.stereotype.Service;
 
 import Gardenia.DTO.AccountDTO;
 import Gardenia.Model.Account;
-import Gardenia.Model.Client;
 import Gardenia.Repository.AccountRepository;
-import Gardenia.Repository.ClientRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class AccountService {
     private final AccountRepository accountRepository;
-    private final ClientRepository clientRepository;
 
     public List<AccountDTO> getAllDTO() {
         return accountRepository.findAccountBy();

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import Gardenia.DTO.AddressDTO;
 import Gardenia.DTO.ClientDTO;
-import Gardenia.Model.Address;
 import Gardenia.Model.Client;
 import Gardenia.Util.ClientKey;
 import java.util.List;

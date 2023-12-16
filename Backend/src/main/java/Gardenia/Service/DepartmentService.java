@@ -3,7 +3,6 @@ package Gardenia.Service;
 import java.util.List;
 import java.util.Optional;
 
-import org.hibernate.sql.ast.tree.predicate.BooleanExpressionPredicate;
 import org.springframework.stereotype.Service;
 
 import Gardenia.DTO.DepartmentDTO;

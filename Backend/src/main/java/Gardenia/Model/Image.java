@@ -25,7 +25,11 @@ public class Image {
 
     @Column(columnDefinition = "VARCHAR(300)", nullable = false)
     private String url;
-    // private Product product;
+
+    @ManyToOne
+    @JsonBackReference("product-image")
+    @JoinColumn(name = "product_id", nullable = true)
+    private Product product;
 
     @ManyToOne
     @JsonBackReference("plant-image")
