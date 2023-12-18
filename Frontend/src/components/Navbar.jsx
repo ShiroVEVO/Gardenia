@@ -4,12 +4,13 @@ import './Navbar.css'
 const Navbar = () => {
     return <>
        { <nav class="navbar">
-            <a href="#">Catalogo</a>
-            <a href="#">Contacto</a>
-            <img src={logo} id = "mainLogo" alt="gardenia"/>
+            <a href="/catalogue">Catalogo</a>
+            <a href="/contact">Contacto</a>
+            <a href="/"><img src={logo} id = "mainLogo" alt="gardenia"/></a>
             <button>En/Es</button>
-            <a href="#">*Icono Cuenta</a>
-            <a href="#">Icono cesta</a>
+            <button>Dark/White</button>
+            <a href="/account">Icono Cuenta</a>
+            <a href="/shoppingCart">Icono cesta</a>
         </nav>}
     </>
 };

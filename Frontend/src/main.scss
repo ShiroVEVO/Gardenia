@@ -1,0 +1,15 @@
+$mainWhiteColor: #d0fdd7;
+$mainDarkColor: #231F20;
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background-color: $mainWhiteColor;
+}
+
