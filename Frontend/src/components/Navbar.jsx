@@ -1,16 +1,21 @@
 import logo from '../assets/logo.svg'
+import Button from './general/Button.jsx'
 import './Navbar.css'
 
 const Navbar = () => {
     return <>
        { <nav class="navbar">
-            <a href="/catalogue">Catalogo</a>
-            <a href="/contact">Contacto</a>
+            <div>
+                <a href="/catalogue">Catalogo</a>
+                <a href="/contact">Contacto</a>
+            </div>
             <a href="/"><img src={logo} id = "mainLogo" alt="gardenia"/></a>
-            <button>En/Es</button>
-            <button>Dark/White</button>
-            <a href="/account">Icono Cuenta</a>
-            <a href="/shoppingCart">Icono cesta</a>
+            <div>
+                <Button text={"Es"}></Button>
+                <Button text={"🌕"}></Button>
+                <a href="/account">👨‍🌾</a>
+                <a href="/shoppingCart">🛒</a>
+            </div>
         </nav>}
     </>
 };

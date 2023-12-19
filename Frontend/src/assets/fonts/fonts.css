@@ -1,7 +1,4 @@
 @font-face {
   font-family: "Gidolinya";
-  src: url("Gidolinya-Regular.woff2") format("woff2"), url("Gidolinya-Regular.woff") format("woff"), url("Gidolinya-Regular.ttf") format("truetype"), url("Gidolinya-Regular.svg#Gidolinya-Regular") format("svg");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}/*# sourceMappingURL=fonts.css.map */
+  src: url("../assets/fonts/GidolinyaRegular.otf") format("opentype");
+}/*# sourceMappingURL=Fonts.css.map */

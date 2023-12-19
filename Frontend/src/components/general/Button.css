@@ -1,0 +1,22 @@
+button {
+  color: #d0fdd7;
+  font-size: 30px;
+  padding: 0.5vw;
+  border-radius: 0.5em;
+  border: 1px solid transparent;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #231F20;
+  cursor: pointer;
+  will-change: filter;
+  transition: filter 300ms;
+}
+button:hover {
+  filter: drop-shadow(0 0 0.1em #231F20);
+  background-color: #d0fdd7;
+  color: #231F20;
+}
+button:focus, button:focus-visible {
+  outline: 10px auto -webkit-focus-ring-color;
+}/*# sourceMappingURL=Button.css.map */

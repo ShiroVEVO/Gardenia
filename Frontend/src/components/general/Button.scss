@@ -1,0 +1,24 @@
+@import '../assets/Colors';
+
+button {
+    background-color: $mainDarkColor;
+    color: $mainWhiteColor;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    padding: 0.5vw;
+    border-radius: 0.5em;
+    cursor: pointer;
+    will-change: filter;
+    transition: filter 400ms;
+    &:hover {
+        filter: drop-shadow(0 0 0.1em $mainDarkColor);
+        background-color: $mainWhiteColor;
+        color: $mainDarkColor;
+    }
+    &:focus,&:focus-visible{
+        outline: 10px auto -webkit-focus-ring-color;
+    }
+  }
+  
+  

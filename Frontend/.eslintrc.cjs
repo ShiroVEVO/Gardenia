@@ -17,4 +17,11 @@ module.exports = {
       { allowConstantExport: true },
     ],
   },
+  rules: [
+    {
+      test: /\.woff2?$/i,
+      type: 'asset/resource',
+      dependency: { not: ['url'] },
+    }, 
+  ]
 }
