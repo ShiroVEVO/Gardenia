@@ -1,14 +1,13 @@
 import './App.css'
 import Navbar from './components/Navbar.jsx'
 import ToggleDarkMode from './components/general/ToggleDarkMode.jsx'
+import Button from './components/general/Button.jsx'
 
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <ToggleDarkMode></ToggleDarkMode>
+      <Navbar></Navbar>
     </>
   )
 }

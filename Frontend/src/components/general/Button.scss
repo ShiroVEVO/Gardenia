@@ -1,20 +1,23 @@
-@import '../assets/Colors';
+@import '../../assets/Colors';
+@import '../../assets/fonts/Fonts.css';
 
 button {
-    background-color: $mainDarkColor;
     color: $mainWhiteColor;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    padding: 0.5vw;
-    border-radius: 0.5em;
+    font-family: 'Metropolis';
+    font-weight: 800;
+    font-size: 30px;
+    display: block;
+    width: 250px;
+    height: 100px;
+    border-radius: 50px;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.4);
+    background: linear-gradient(0, $mainDarkColor, $secondDarkColor);
+    padding: 0.5dvw;
     cursor: pointer;
-    will-change: filter;
-    transition: filter 400ms;
+    transition: 0.4s;
     &:hover {
-        filter: drop-shadow(0 0 0.1em $mainDarkColor);
-        background-color: $mainWhiteColor;
-        color: $mainDarkColor;
+        transform: scale(1.1);
+        transform-origin: center center;
     }
     &:focus,&:focus-visible{
         outline: 10px auto -webkit-focus-ring-color;

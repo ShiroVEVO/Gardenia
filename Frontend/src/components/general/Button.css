@@ -1,21 +1,22 @@
+@import '../../assets/fonts/Fonts.css';
 button {
   color: #d0fdd7;
+  font-family: "Metropolis";
+  font-weight: 800;
   font-size: 30px;
-  padding: 0.5vw;
-  border-radius: 0.5em;
-  border: 1px solid transparent;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #231F20;
+  display: block;
+  width: 250px;
+  height: 100px;
+  border-radius: 50px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(0, #231F20, #4b4245);
+  padding: 0.5dvw;
   cursor: pointer;
-  will-change: filter;
-  transition: filter 300ms;
+  transition: 0.4s;
 }
 button:hover {
-  filter: drop-shadow(0 0 0.1em #231F20);
-  background-color: #d0fdd7;
-  color: #231F20;
+  transform: scale(1.1);
+  transform-origin: center center;
 }
 button:focus, button:focus-visible {
   outline: 10px auto -webkit-focus-ring-color;

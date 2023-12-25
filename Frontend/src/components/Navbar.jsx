@@ -1,18 +1,19 @@
 import logo from '../assets/logo.svg'
-import Button from './general/Button.jsx'
+//import Button from './general/Button'
+import Toggle from './general/ToggleDarkMode'
 import './Navbar.css'
 
 const Navbar = () => {
     return <>
        { <nav class="navbar">
             <div>
-                <a href="/catalogue">Catalogo</a>
+                <a href="/catalogue">Catálogo</a>
                 <a href="/contact">Contacto</a>
             </div>
-            <a href="/"><img src={logo} id = "mainLogo" alt="gardenia"/></a>
-            <div>
-                <Button text={"Es"}></Button>
-                <Button text={"🌕"}></Button>
+            <a id="mainLogoReference" href="/"><img src={logo} id = "mainLogo" alt="gardenia"/></a>
+            <div id="rigthDiv">
+                <a>es</a>
+                <Toggle></Toggle>
                 <a href="/account">👨‍🌾</a>
                 <a href="/shoppingCart">🛒</a>
             </div>

@@ -3,27 +3,41 @@
 
 .navbar{
     width: 100%;
-    height: 200px;
     display: flex;
     flex-wrap: wrap;
-    background-color: $mainWhiteColor;
-    color: $mainDarkColor;
-    font-size: 50px;
-    padding: 1vw;
+    font-size: 1.5625dvw;//30px;
+    padding-top: 1dvw;
     box-sizing: border-box;
-    font-family: 'Gidolinya', sans-serif;
+    justify-content: space-between;
+    font-family: 'Gidolinya'; //'Metropolis', 'Gidolinya', sans-serif;
+    font-weight: 800;
     a {
-        color: $mainWhiteColor;
+        color: $mainDarkColor;
         text-decoration: none;
-        padding-left: 5vw;
+        padding-left: 2.58dvw;
         &:hover{
             color: $secondGreen;
         }
     }
+    div{
+        height: 4dvw;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #rigthDiv {
+        padding-right: 2.58dvw;
+    }
 }
 
+
 #mainLogo{
-    width: 150px;
+    width: 3.9763dvw;
     display: flex;
     justify-content: center;
+}
+
+#mainLogoReference{
+    padding: 0;
 }
