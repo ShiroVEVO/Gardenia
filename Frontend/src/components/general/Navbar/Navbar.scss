@@ -1,16 +1,19 @@
-@import '../assets/fonts/Fonts';
-@import '../assets/Colors';
+@import '../../../assets/fonts/fontsCss/Fonts';
+@import '../../../assets/colorsCss/Colors';
 
 .navbar{
     width: 100%;
+    height: 8dvh;
+
     display: flex;
     flex-wrap: wrap;
-    font-size: 1.5625dvw;//30px;
-    padding-top: 1dvw;
     box-sizing: border-box;
     justify-content: space-between;
-    font-family: 'Gidolinya'; //'Metropolis', 'Gidolinya', sans-serif;
-    font-weight: 800;
+    padding-top: 1dvw;
+    font-family: 'Metropolis', 'Gidolinya', sans-serif;
+    font-weight: 600;
+    font-size: 1.0625dvw;//30px;
+    transition: background-color 0.3s ease, padding 0.3s ease;
     a {
         color: $mainDarkColor;
         text-decoration: none;
@@ -20,15 +23,18 @@
         }
     }
     div{
-        height: 4dvw;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
     }
+
     #rigthDiv {
         padding-right: 2.58dvw;
     }
+    .logo {
+        transition: font-size 0.3s ease;
+      }
 }
 
 

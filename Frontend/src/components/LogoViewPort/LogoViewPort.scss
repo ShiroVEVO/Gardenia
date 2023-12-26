@@ -1,0 +1,17 @@
+@import '../../../assets/fonts/fontsCss/Fonts.scss';
+@import '../../../assets/colorsCss/Colors.scss';
+
+#logoViewPort{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 92dvh;
+}
+
+#mainLogo{
+    position: relative;
+    width: 20dvw;
+    top: 20dvh;
+    //Wind Animation: https://www.youtube.com/watch?v=PkLY1po51AU
+    
+}

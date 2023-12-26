@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "Gidolinya";
+  src: url("../GidolinyaRegular.otf") format("opentype");
+}
+@font-face {
+  font-family: "Metropolis";
+  src: url("../MetropolisBlack.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Metropolis";
+  src: url("../MetropolisBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+#logoViewPort {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 92dvh;
+}
+
+#mainLogo {
+  position: relative;
+  width: 20dvw;
+  top: 20dvh;
+}/*# sourceMappingURL=LogoViewPort.css.map */

@@ -1,4 +1,5 @@
-@import '../../assets/fonts/Fonts.css';
+@import '../../../assets/fonts/fontsCss/Fonts.css';
+
 button {
   color: #d0fdd7;
   font-family: "Metropolis";
