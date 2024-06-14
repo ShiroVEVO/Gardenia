@@ -1,0 +1,6 @@
+[submodule "gardenia-frontend"]
+	path = gardenia-frontend
+	url = https://github.com/ShiroVEVO/gardenia-frontend.git
+[submodule "gardenia-backend"]
+	path = gardenia-backend
+	url = https://github.com/ShiroVEVO/gardenia-backend.git
